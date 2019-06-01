@@ -10,21 +10,50 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
+    TextView number,family,color,phrase;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
-        /** To open a new activity we can create a certain class then we can make a object out of the class we have just created.
-         * below example we created a OPenNumbersActivity class */
-        OpenNumbersActivity open_number = new OpenNumbersActivity ();
+        number=(TextView)findViewById ( R.id.text_numbers );
+        family=(TextView)findViewById ( R.id.text_family );
+        color=(TextView)findViewById ( R.id.text_color );
+        phrase=(TextView)findViewById ( R.id.text_phrase );
 
-// casting the TextView/////
-        TextView familyTextView = (TextView)findViewById ( R.id.text_family );
+        number.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent number_intent = new Intent ( MainActivity.this,NumbersActivity.class );
+                startActivity ( number_intent );
+            }
+        } );
+        family.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent family_intent = new Intent ( MainActivity.this,FamilyActivity.class );
+                startActivity ( family_intent );
 
-        familyTextView.setOnClickListener (  open_number );
+            }
+        } );
+        color.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent color_intent = new Intent ( MainActivity.this,ColorActivity.class );
+                startActivity ( color_intent );
+            }
+        } );
 
-        // or we have do like this => familyTextView.setOnClickListener (  new OpenNumbersActivity ());
+        phrase.setOnClickListener ( new View.OnClickListener () {
+            @Override
+            public void onClick(View v) {
+                Intent phrase_intent = new Intent ( MainActivity.this,PhrasesActivity.class );
+                startActivity ( phrase_intent );
+            }
+        } );
+
+
 
     }
 
