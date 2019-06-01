@@ -15,15 +15,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
 
+        /** To open a new activity we can create a certain class then we can make a object out of the class we have just created.
+         * below example we created a OPenNumbersActivity class */
+        OpenNumbersActivity open_number = new OpenNumbersActivity ();
+
+// casting the TextView/////
+        TextView familyTextView = (TextView)findViewById ( R.id.text_family );
+
+        familyTextView.setOnClickListener (  open_number );
+
+        // or we have do like this => familyTextView.setOnClickListener (  new OpenNumbersActivity ());
+
     }
-    /** to open a new activity we can use the onClick future of xml file
-     we add   android:onClick="xxxxx"  on the xml part  then we call it by creating xxxxx method
-     below we add android:onClick="number"  on the xml part  then we call it by creating number method  */
-    public void number(View view){
-        Intent numberIntent = new Intent ( MainActivity.this,NumbersActivity.class );
-        startActivity ( numberIntent );
 
 
     }
 
-}
+
