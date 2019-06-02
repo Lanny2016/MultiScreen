@@ -56,7 +56,7 @@ public class MainActivity extends AppCompatActivity {
         Log.v ("Array values ///// ","value of index 9: " + words[9]);
 
 
-// casting the TextView for onClick listener
+//casting the TextView for onClick listener
 //        number=(TextView)findViewById ( R.id.text_numbers );
 //        family=(TextView)findViewById ( R.id.text_family );
 //        color=(TextView)findViewById ( R.id.text_color );
