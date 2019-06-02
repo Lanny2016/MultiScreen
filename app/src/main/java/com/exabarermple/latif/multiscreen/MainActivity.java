@@ -37,13 +37,13 @@ public class MainActivity extends AppCompatActivity {
         words[8] = "nine";
         words[9] = "ten";
         //Logging to see if the values in the array works or not
-      /** there are different numbers of Logs in android such as
-       * Log.v (String, String) => verbose Log
-       * Log.i (String, String) => information Log
-       * Log.d (String, String) => debug Log
-       * Log.w (String, String) => warning Log
-       * Log.e (String, String) => error  Log*/
-      // below we use the verbose log
+        /** there are different numbers of Logs in android such as
+         * Log.v (String, String) => verbose Log
+         * Log.i (String, String) => information Log
+         * Log.d (String, String) => debug Log
+         * Log.w (String, String) => warning Log
+         * Log.e (String, String) => error  Log*/
+        // below we use the verbose log
         Log.v ("Array values ////// ","value of index 0: " + words[0]);
         Log.v ("Array values ///// ","value of index 1: " + words[1]);
         Log.v ("Array values ///// ","value of index 2: " + words[2]);
