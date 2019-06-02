@@ -17,6 +17,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
+        // making array and text the value in Logcat
         /** make array in java
          * we can make different types arrays according to our needs so data types can be different
          * such as  int[] numbers = new int[x]
