@@ -9,6 +9,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView number,family,color,phrase;
@@ -18,25 +20,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.activity_main );
         // making array and text the value in Logcat
-        /** make array in java
-         * we can make different types arrays according to our needs so data types can be different
-         * such as  int[] numbers = new int[x]
-         * String[] words = new String[x]
-         * boolean[] select = new boolean[x]
-         * [x] in here is the length of the array*/
-        String[] words = new String[10];
+        /** make an Arraylist in java
+         * we can make different types ArrayLists according to our needs so data types can be different
+         * such as  ArrayList<String> xxxxxx = new ArrayList<String>();
+         * ArrayList<Integer> xxxxxx = new ArrayList<Integer>()*/
 
-        // add value to the array
-        words[0] = "one";
-        words[1] = "two";
-        words[2] = "three";
-        words[3] = "four";
-        words[4] = "five";
-        words[5] = "six";
-        words[6] = "seven";
-        words[7] = "eight";
-        words[8] = "nine";
-        words[9] = "ten";
+        ArrayList<String> words = new ArrayList<String> ( );
+
+        // adding value to the ArrayList
+       words.add ( "one" );
+       words.add ( "two" );
+        words.add ( "three" );
+        words.add ( "four" );
+        words.add ( "five" );
+        words.add ( "six" );
+        words.add ( "seven" );
+        words.add ( "eight" );
+        words.add ( "nine" );
+        words.add ( "ten" );
         //Logging to see if the values in the array works or not
         /** there are different numbers of Logs in android such as
          * Log.v (String, String) => verbose Log
@@ -45,16 +46,16 @@ public class MainActivity extends AppCompatActivity {
          * Log.w (String, String) => warning Log
          * Log.e (String, String) => error  Log*/
         // below we use the verbose log
-        Log.v ("Array values ////// ","value of index 0: " + words[0]);
-        Log.v ("Array values ///// ","value of index 1: " + words[1]);
-        Log.v ("Array values ///// ","value of index 2: " + words[2]);
-        Log.v ("Array values ///// ","value of index 3: " + words[3]);
-        Log.v ("Array values ///// ","value of index 4: " + words[4]);
-        Log.v ("Array values ///// ","value of index 5: " + words[5]);
-        Log.v ("Array values ///// ","value of index 6: " + words[6]);
-        Log.v ("Array values ///// ","value of index 7: " + words[7]);
-        Log.v ("Array values ///// ","value of index 8: " + words[8]);
-        Log.v ("Array values ///// ","value of index 9: " + words[9]);
+        Log.v ("Array values ////// ","value of index 0: " + words.get ( 0 ));
+        Log.v ("Array values ///// ","value of index 1: " + words.get ( 1 ));
+        Log.v ("Array values ///// ","value of index 2: " + words.get ( 2 ));
+        Log.v ("Array values ///// ","value of index 3: " + words.get ( 3 ));
+        Log.v ("Array values ///// ","value of index 4: " + words.get ( 4 ));
+        Log.v ("Array values ///// ","value of index 5: " + words.get ( 5 ));
+        Log.v ("Array values ///// ","value of index 6: " + words.get ( 6 ));
+        Log.v ("Array values ///// ","value of index 7: " + words.get ( 7 ));
+        Log.v ("Array values ///// ","value of index 8: " + words.get ( 8 ));
+        Log.v ("Array values ///// ","value of index 9: " + words.get ( 9 ));
 
 
 //casting the TextView for onClick listener
