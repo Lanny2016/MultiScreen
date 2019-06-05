@@ -45,7 +45,7 @@ public class NumbersActivity extends AppCompatActivity {
 //           wordView1.setText ( words.get ( index ) );
 //            wordView1.setTextSize ( 16);
 //           rootView.addView ( wordView1 );
-
+    //
       //  int index = 0;
 //        while (words.size ()<10){
 //            TextView wordView1 = new TextView ( this );
