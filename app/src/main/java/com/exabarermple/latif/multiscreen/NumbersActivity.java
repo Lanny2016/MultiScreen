@@ -38,7 +38,7 @@ public class NumbersActivity extends AppCompatActivity {
         //displaying the listValues in the layout
         LinearLayout rootView = (LinearLayout)findViewById ( R.id.root_view );
 
-        /** displaying listView values on a layout as well as by using while loop and for loop */
+        /** displaying listView values on a layout as well as by using while loop and for loop*/
 
 //        int index = 0;
 //        TextView wordView1 = new TextView ( this );
