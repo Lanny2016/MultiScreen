@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<!-- we do not have to use the other layouts so they have been deleted-->
+<!-- we do not have to use the other layouts so they have been deleted
+because no need to make them space-->
 <ListView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
