@@ -13,8 +13,10 @@
         android:layout_height="100dp"
         android:padding="40dp"
         android:text="Numbers"
-        android:background="#f4b81b"
-        android:textSize="16dp" />
+        android:background="@color/colorForNumbersActivity"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:id="@+id/text_family"
@@ -22,8 +24,10 @@
         android:layout_height="100dp"
         android:padding="40dp"
         android:text="Family"
-        android:background="#56d31c"
-        android:textSize="16dp" />
+        android:background="@color/colorForFamilyActivity"
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#ffffff"/>
 
     <TextView
         android:id="@+id/text_color"
@@ -31,8 +35,10 @@
         android:layout_height="100dp"
         android:padding="40dp"
         android:text="Color"
-        android:textSize="16dp"
-        android:background="#a400d3"/>
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#ffffff"
+        android:background="@color/colorForColorsActivity"/>
 
     <TextView
         android:id="@+id/text_phrase"
@@ -40,7 +46,9 @@
         android:layout_height="100dp"
         android:padding="40dp"
         android:text="Phrases"
-        android:textSize="16dp"
-        android:background="#2590d3"/>
+        android:textStyle="bold"
+        android:textSize="17sp"
+        android:textColor="#ffffff"
+        android:background="@color/colorForPhrasesActivity"/>
 
 </LinearLayout>

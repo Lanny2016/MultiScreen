@@ -54,7 +54,7 @@ public class PhrasesActivity extends AppCompatActivity {
         // we update the ArrayAdapter
         //  ArrayAdapter<Word> itemsAdapter = new ArrayAdapter<Word> ( this,R.layout.custom_list_view,words );
         // now we use custom wordAdapter we made
-        wordAdapter adapter = new wordAdapter (this,words);
+        wordAdapter adapter = new wordAdapter (this,words,R.color.colorForPhrasesActivity);
         // casting listView
 
         ListView list_view = (ListView)findViewById ( R.id.listView );
