@@ -30,18 +30,17 @@ public class FamilyActivity extends AppCompatActivity {
 
         /** now we create a new word object and add word objects in the list*/
 
-        Word w = new Word ( "One","Bir",R.drawable.one);
+        Word w = new Word ( "Grandfather","Dede",R.drawable.grandfather);
         // add it in the words list
         words.add ( w );
         // or
-        words.add ( new Word ( "Two","İki",R.drawable.two));
-        words.add ( new Word ( "Three","Üç",R.drawable.three ));
-        words.add ( new Word ( "Four","Dört",R.drawable.four ));
-        words.add ( new Word ( "Five","Beş",R.drawable.five ));
-        words.add ( new Word ( "Six","Altı",R.drawable.six ));
-        words.add ( new Word ( "Seven","Yedi",R.drawable.seven ));
-        words.add ( new Word ( "Eight","Sekiz",R.drawable.eight));
-        words.add ( new Word ( "Nine","Dokuz" ,R.drawable.nine));
+        words.add ( new Word ( "Grandmother","Nene",R.drawable.grandmother));
+        words.add ( new Word ( "Father","Baba",R.drawable.father ));
+        words.add ( new Word ( "Mother","Anne",R.drawable.mother ));
+        words.add ( new Word ( "daughter","Kız",R.drawable.daughter ));
+        words.add ( new Word ( "Son","Oğul",R.drawable.son));
+        words.add ( new Word ( "Brother","Ağabey",R.drawable.brother ));
+        words.add ( new Word ( "Sister","Abla",R.drawable.sister));
 
         /** displaying values on a listView by using a ArrayAdapter
          * below we made an ArrayAdapter which uses <String> in it*/
