@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:background="#fcfbc1"
     android:orientation="horizontal">
 
@@ -11,39 +11,51 @@
         android:id="@+id/imageForNumbers"
         android:layout_width="88dp"
         android:layout_height="88dp"
-        android:src="@drawable/one"
-        android:layout_marginLeft="16dp"
-        />
-<LinearLayout
-    android:id="@+id/text_container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-    <TextView
-        android:id="@+id/textViewEnglish"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginLeft="16dp"
-       tools:text="English"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:textSize="17sp"
-        android:padding="8dp"
-       />
+        android:layout_marginLeft="8dp"
+        android:src="@drawable/one" />
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_gravity="center_vertical"
+        android:src="@drawable/play_icon" />
 
-    <TextView
-        android:id="@+id/textViewTurkish"
-        android:layout_width="match_parent"
-        android:layout_height="44dp"
-        android:layout_marginLeft="16dp"
-        tools:text="Turkish"
-        android:textAllCaps="false"
-        android:textStyle="bold"
-        android:padding="8dp"
-        android:textColor="#ffffff"
-        android:textSize="17sp"
-        />
-</LinearLayout>
 
-</LinearLayout>
+        <LinearLayout
+            android:id="@+id/text_container"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textViewEnglish"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="16dp"
+                android:padding="8dp"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:text="English" />
+
+            <TextView
+                android:id="@+id/textViewTurkish"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginLeft="16dp"
+                android:padding="8dp"
+                android:textAllCaps="false"
+                android:textColor="#ffffff"
+                android:textSize="17sp"
+                android:textStyle="bold"
+                tools:text="Turkish" />
+
+
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+

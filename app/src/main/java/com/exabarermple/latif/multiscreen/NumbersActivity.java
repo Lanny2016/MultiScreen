@@ -1,18 +1,22 @@
 package com.exabarermple.latif.multiscreen;
 
+import android.content.Context;
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class NumbersActivity extends AppCompatActivity {
-
+MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
         setContentView ( R.layout.worlist );
-
 
         /** make an Arraylist in java
          * we can make different types ArrayLists according to our needs so data types can be different
@@ -56,9 +60,18 @@ public class NumbersActivity extends AppCompatActivity {
       // now we use custom wordAdapter we made
       wordAdapter adapter = new wordAdapter (this,words,R.color.colorForNumbersActivity);
         // casting listView
-
         ListView list_view = (ListView)findViewById ( R.id.listView );
         list_view.setAdapter ( adapter );
+        /**  now we are setting the itemOnclick listener for the list but it can only play single audio file*/
+        list_view.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // creating a mediaPlayer
+                mediaPlayer = MediaPlayer.create ( NumbersActivity.this,R.raw.music );
+                mediaPlayer.start ();
+                Toast.makeText (NumbersActivity.this,"played",Toast.LENGTH_SHORT).show ();
+            }
+        } );
 
     }
 }
