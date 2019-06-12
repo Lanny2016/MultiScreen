@@ -92,7 +92,16 @@ public class PhrasesActivity extends AppCompatActivity {
             }
         } );
     }
-        /** clean up the media player by releasing its resources
+
+    @Override
+    protected void onStop() {
+        super.onStop ();
+        // when the activity is stopped, release the mediaPlayer
+        // because we wont be playing the sound any more
+        releaseMediaPlayer ();
+    }
+
+    /** clean up the media player by releasing its resources
          * so we should create a method to do so*/
         private void releaseMediaPlayer(){
 
