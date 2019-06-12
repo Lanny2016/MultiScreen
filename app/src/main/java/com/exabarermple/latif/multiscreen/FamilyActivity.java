@@ -1,13 +1,16 @@
 package com.exabarermple.latif.multiscreen;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class FamilyActivity extends AppCompatActivity {
-
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -23,24 +26,28 @@ public class FamilyActivity extends AppCompatActivity {
          * ArrayList<String> words = new ArrayList<String>();
          * ArrayList<Word> words = new ArrayList<Word>(); */
 
-        ArrayList<Word> words = new ArrayList<> ();
-
+        final ArrayList<Word> words = new ArrayList<> ();
+        /**we add final before ArrayList<Word> words = new ArrayList<>();
+         * so that the variable not to be changed anymore and we can call in the inner class
+         * because it is in onCreate method
+         * putting final like making it public to call it from inner class
+         */
         // adding value to the ArrayList
         //words.add ( "one");
 
         /** now we create a new word object and add word objects in the list*/
 
-        Word w = new Word ( "Grandfather","Dede",R.drawable.grandfather);
+        Word w = new Word ( "Grandfather","Dede",R.drawable.grandfather,R.raw.dede);//audio dede added
         // add it in the words list
         words.add ( w );
         // or
-        words.add ( new Word ( "Grandmother","Nene",R.drawable.grandmother));
-        words.add ( new Word ( "Father","Baba",R.drawable.father ));
-        words.add ( new Word ( "Mother","Anne",R.drawable.mother ));
-        words.add ( new Word ( "daughter","Kız",R.drawable.daughter ));
-        words.add ( new Word ( "Son","Oğul",R.drawable.son));
-        words.add ( new Word ( "Brother","Ağabey",R.drawable.brother ));
-        words.add ( new Word ( "Sister","Abla",R.drawable.sister));
+        words.add ( new Word ( "Grandmother","Nene",R.drawable.grandmother,R.raw.nene));
+        words.add ( new Word ( "Father","Baba",R.drawable.father,R.raw.baba ));
+        words.add ( new Word ( "Mother","Anne",R.drawable.mother,R.raw.anne));
+        words.add ( new Word ( "daughter","Kız",R.drawable.daughter,R.raw.kizim ));
+        words.add ( new Word ( "Son","Oğul",R.drawable.son,R.raw.ogul));
+        words.add ( new Word ( "Brother","Ağabey",R.drawable.brother,R.raw.abey ));
+        words.add ( new Word ( "Sister","Abla",R.drawable.sister,R.raw.abla));
 
         /** displaying values on a listView by using a ArrayAdapter
          * below we made an ArrayAdapter which uses <String> in it*/
@@ -58,6 +65,16 @@ public class FamilyActivity extends AppCompatActivity {
 
         ListView list_view = (ListView)findViewById ( R.id.listView );
         list_view.setAdapter ( adapter );
+        // OnItemClickListener for list to play audio
+        list_view.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Word word = words.get ( position );
+               mediaPlayer = MediaPlayer.create (FamilyActivity.this,word.getmAudioResourceId ());
+               mediaPlayer.start ();
+            }
+        } );
+
 
     }
 }

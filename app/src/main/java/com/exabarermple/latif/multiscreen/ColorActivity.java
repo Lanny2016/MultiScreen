@@ -1,13 +1,16 @@
 package com.exabarermple.latif.multiscreen;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
 
 public class ColorActivity extends AppCompatActivity {
-
+    MediaPlayer mediaPlayer;
     // applied the code from numbers activity to display almost the same list
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,22 +27,26 @@ public class ColorActivity extends AppCompatActivity {
          * ArrayList<String> words = new ArrayList<String>();
          * ArrayList<Word> words = new ArrayList<Word>(); */
 
-        ArrayList<Word> words = new ArrayList<> ();
-
+        final ArrayList<Word> words = new ArrayList<> ();
+        /**we add final before ArrayList<Word> words = new ArrayList<>();
+         * so that the variable not to be changed anymore and we can call in the inner class
+         * because it is in onCreate method
+         * putting final like making it public to call it from inner class
+         */
         // adding value to the ArrayList
         //words.add ( "one");
 
         /** now we create a new word object and add word objects in the list*/
 
-        Word w = new Word ( "Black","Sıyah",R.drawable.black);
+        Word w = new Word ( "Black","Sıyah",R.drawable.black,R.raw.siyah);// audio siyah added
         // add it in the words list
         words.add ( w );
         // or
-        words.add ( new Word ( "Red","Kırmızı",R.drawable.red));
-        words.add ( new Word ( "Yellow","Sarı",R.drawable.yellow ));
-        words.add ( new Word ( "Green","Yeşil",R.drawable.green));
-        words.add ( new Word ( "Orange","Turuncu",R.drawable.orange ));
-        words.add ( new Word ( "Blue","Mavi",R.drawable.blue));
+        words.add ( new Word ( "Red","Kırmızı",R.drawable.red,R.raw.kirmizi));
+        words.add ( new Word ( "Yellow","Sarı",R.drawable.yellow,R.raw.sari));
+        words.add ( new Word ( "Green","Yeşil",R.drawable.green,R.raw.yesil));
+        words.add ( new Word ( "Orange","Turuncu",R.drawable.orange,R.raw.turuncu ));
+        words.add ( new Word ( "Blue","Mavi",R.drawable.blue,R.raw.mavi));
 
 
         /** displaying values on a listView by using a ArrayAdapter
@@ -58,6 +65,16 @@ public class ColorActivity extends AppCompatActivity {
 
         ListView list_view = (ListView)findViewById ( R.id.listView );
         list_view.setAdapter ( adapter );
+
+        // adding onItemClickListener for the list to play the audio
+        list_view.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+               Word word = words.get ( position );
+               mediaPlayer = MediaPlayer.create ( ColorActivity.this,word.getmAudioResourceId ());
+               mediaPlayer.start ();
+            }
+        } );
 
     }
 }

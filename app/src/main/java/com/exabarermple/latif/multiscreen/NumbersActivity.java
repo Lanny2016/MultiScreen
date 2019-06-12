@@ -27,25 +27,29 @@ MediaPlayer mediaPlayer;
          * ArrayList<String> words = new ArrayList<String>();
          * ArrayList<Word> words = new ArrayList<Word>(); */
 
-        ArrayList<Word> words = new ArrayList<> ();
-
+      final ArrayList<Word> words = new ArrayList<> ();// we add final so that the variable not to be changed anymore
+      /**we add final before ArrayList<Word> words = new ArrayList<>();
+       * so that the variable not to be changed anymore and we can call in the inner class
+       * because it is in onCreate method
+       * putting final like making it public to call it from inner class
+        */
         // adding value to the ArrayList
         //words.add ( "one");
 
         /** now we create a new word object and add word objects in the list*/
 
-        Word w = new Word ( "One","Bir",R.drawable.one);
+        Word w = new Word ( "One","Bir",R.drawable.one,R.raw.one);// audio one added
         // add it in the words list
         words.add ( w );
         // or
-        words.add ( new Word ( "Two","İki",R.drawable.two));
-        words.add ( new Word ( "Three","Üç",R.drawable.three ));
-        words.add ( new Word ( "Four","Dört",R.drawable.four ));
-        words.add ( new Word ( "Five","Beş",R.drawable.five ));
-        words.add ( new Word ( "Six","Altı",R.drawable.six ));
-        words.add ( new Word ( "Seven","Yedi",R.drawable.seven ));
-        words.add ( new Word ( "Eight","Sekiz",R.drawable.eight));
-        words.add ( new Word ( "Nine","Dokuz" ,R.drawable.nine));
+        words.add ( new Word ( "Two","İki",R.drawable.two,R.raw.two));
+        words.add ( new Word ( "Three","Üç",R.drawable.three,R.raw.three ));
+        words.add ( new Word ( "Four","Dört",R.drawable.four,R.raw.four ));
+        words.add ( new Word ( "Five","Beş",R.drawable.five,R.raw.five ));
+        words.add ( new Word ( "Six","Altı",R.drawable.six,R.raw.six ));
+        words.add ( new Word ( "Seven","Yedi",R.drawable.seven,R.raw.seven ));
+        words.add ( new Word ( "Eight","Sekiz",R.drawable.eight,R.raw.eight));
+        words.add ( new Word ( "Nine","Dokuz" ,R.drawable.nine,R.raw.nine));
 
         /** displaying values on a listView by using a ArrayAdapter
          * below we made an ArrayAdapter which uses <String> in it*/
@@ -67,9 +71,10 @@ MediaPlayer mediaPlayer;
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 // creating a mediaPlayer
-                mediaPlayer = MediaPlayer.create ( NumbersActivity.this,R.raw.music );
+              Word word = words.get ( position );
+                // this is only for single audio ==> mediaPlayer = MediaPlayer.create ( NumbersActivity.this,R.raw.one );
+                mediaPlayer = MediaPlayer.create ( NumbersActivity.this,word.getmAudioResourceId ());
                 mediaPlayer.start ();
-                Toast.makeText (NumbersActivity.this,"played",Toast.LENGTH_SHORT).show ();
             }
         } );
 

@@ -1,13 +1,17 @@
 package com.exabarermple.latif.multiscreen;
 
+import android.media.MediaPlayer;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
-
+    MediaPlayer mediaPlayer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -23,25 +27,29 @@ public class PhrasesActivity extends AppCompatActivity {
          * ArrayList<String> words = new ArrayList<String>();
          * ArrayList<Word> words = new ArrayList<Word>(); */
 
-        ArrayList<Word> words = new ArrayList<> ();
-
+        final ArrayList<Word> words = new ArrayList<> ();
+        /**we add final before ArrayList<Word> words = new ArrayList<>();
+         * so that the variable not to be changed anymore and we can call in the inner class
+         * because it is in onCreate method
+         * putting final like making it public to call it from inner class
+         */
         // adding value to the ArrayList
         //words.add ( "one");
 
         /** now we create a new word object and add word objects in the list*/
 
-        Word w = new Word ( "Hi","Merhaba");
+        Word w = new Word ( "Hi","Merhaba",R.raw.hi);
         // add it in the words list
         words.add ( w );
         // or
-        words.add ( new Word ( "How are you?","Nasılsın?"));
-        words.add ( new Word ( "How old are you?","Kaç yaşındasın?"));
-        words.add ( new Word ( "Where are you from?","Nerelisin?"));
-        words.add ( new Word ( "What is your name?","Adın ne?" ));
-        words.add ( new Word ( "Are you married?","Evli misin?"));
-        words.add ( new Word ( "How many people are there in your family?","Ailende kaç kişivar?"));
-        words.add ( new Word ( "Do you have any children?","Çocuğun var mı?"));
-        words.add ( new Word ( "What are their names?","Onların adları ne?"));
+        words.add ( new Word ( "How are you?","Nasılsın?",R.raw.howareyou));
+        words.add ( new Word ( "How old are you?","Kaç yaşındasın?",R.raw.kacyasindasin));
+        words.add ( new Word ( "Where are you from?","Nerelisin?",R.raw.from));
+        words.add ( new Word ( "What is your name?","Adın ne?" ,R.raw.name));
+        words.add ( new Word ( "Are you married?","Evli misin?",R.raw.married));
+        words.add ( new Word ( "How many people do you have?","Ailende kaç kişivar?",R.raw.kackisi));
+        words.add ( new Word ( "Do you have any children?","Çocuğun var mı?",R.raw.child));
+        words.add ( new Word ( "What are their names?","Onların adları ne?",R.raw.theirnames));
 
         /** displaying values on a listView by using a ArrayAdapter
          * below we made an ArrayAdapter which uses <String> in it*/
@@ -59,6 +67,17 @@ public class PhrasesActivity extends AppCompatActivity {
 
         ListView list_view = (ListView)findViewById ( R.id.listView );
         list_view.setAdapter ( adapter );
+        /**  now we are setting the itemOnclick listener for the list but it can only play single audio file*/
+        list_view.setOnItemClickListener ( new AdapterView.OnItemClickListener () {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                // creating a mediaPlayer
+                Word word = words.get ( position );
+                // this is only for single audio ==> mediaPlayer = MediaPlayer.create ( NumbersActivity.this,R.raw.one );
+                mediaPlayer = MediaPlayer.create ( PhrasesActivity.this,word.getmAudioResourceId ());
+                mediaPlayer.start ();
+            }
+        } );
 
     }
 }
