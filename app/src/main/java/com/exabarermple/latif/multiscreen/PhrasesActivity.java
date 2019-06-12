@@ -11,7 +11,15 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class PhrasesActivity extends AppCompatActivity {
-    MediaPlayer mediaPlayer;
+   private  MediaPlayer mediaPlayer;
+    /** below we set the mediaPlayer.setOnCompletionListener as a global object here so that we would not need to create
+     * it every time we need it */
+    private MediaPlayer.OnCompletionListener onCompletionListener = new MediaPlayer.OnCompletionListener () {
+        @Override
+        public void onCompletion(MediaPlayer mediaPlayer) {
+            releaseMediaPlayer ();
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate ( savedInstanceState );
@@ -74,10 +82,27 @@ public class PhrasesActivity extends AppCompatActivity {
                 // creating a mediaPlayer
                 Word word = words.get ( position );
                 // this is only for single audio ==> mediaPlayer = MediaPlayer.create ( NumbersActivity.this,R.raw.one );
+                // release the mediaPlayer in case it plays something before playing the coming one
+                releaseMediaPlayer ();
                 mediaPlayer = MediaPlayer.create ( PhrasesActivity.this,word.getmAudioResourceId ());
                 mediaPlayer.start ();
+                // set up a listener on the mediaPlayer so that we can stop and release the mediaPlayer
+                //once it it is finished
+                mediaPlayer.setOnCompletionListener ( onCompletionListener );
             }
         } );
+    }
+        /** clean up the media player by releasing its resources
+         * so we should create a method to do so*/
+        private void releaseMediaPlayer(){
+
+            if(mediaPlayer!=null){
+                mediaPlayer.release ();
+                // set the mediaPlayer to null so that the mediaPlayer cant play an audio file at the moment
+                mediaPlayer = null;
+            }
+
+        }
 
     }
-}
+
